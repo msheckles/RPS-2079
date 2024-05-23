@@ -1,48 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset='utf-8'>
-    <title>Rock Paper Scissor</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 
 <body>
-    <div id="first">
-        <div id="intro">Rock Paper Scissor</div>
-        <div id="win">You Win!</div>
-        <div id="lost">You Lost!</div>
-        <div id="draw">DRAW</div>
-        <!-- Rock Paper Scissor -->
+    <div id="Intro" style="color: white;">
+        <div style="height: 130px;"></div>
+        <div class="row ps-5">
+            <div class="col-4"></div>
+            <div class="col-5" id="rps">
+                <h1 class="fw-bolder">Rock Paper Scissors</h1>
+            </div>
+        </div>
+        <div class="row py-3" style="height: 100px;">
+            <div class="col-4"></div>
+            <div class="col-1" style="width: 100px;"></div>
+            <div class="col-5">
+                <button type="button" class="button btn btn-outline-dark my-4" style="color: azure;" onclick="check1()">
+                    <h2>Singleplayer</h2>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1" style="width: 100px;"></div>
+            <div class="col-5">
+                <button type="button" class="button btn btn-outline-dark my-4" style="color: azure;" onclick="check2()">
+                    <h2>Multiplayer</h2>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div id="second">
-        <div id="">You <span id="yScore"></span> : <span id="aScore"></span> AI</div>
+    <div id="Back">
+        <div class="row" style="height: 40px;">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <button type="button" id="back" class="btn btn-outline-dark my-4" style="color: azure;" onclick="menu()">back</button>
+            </div>
+        </div>
     </div>
 
-    <div id="third">
-        <div id="n">Your Turn !</div>
-        <div id="r">Computer Chose “rock”</div>
-        <div id="p">Computer Chose “paper”</div>
-        <div id="s">Computer Chose “scissor”</div>
+    <div id="Single" class="text-center" style="color: black;">
+        <h1 class="fw-bolder" id="a">Rock Paper Scissors</h1>
+        <div class="my-2">
+            <h1 class="fw-bolder">You <span id="pScore">0</span> : <span id="aiScore">0</span> AI</h1>
+            <h1 class="fw-bolder">Computer Chose : <span id="comp">Rock/Paper/Scissors</span></h1>
+        </div>
+
+        <div class="container py-4 ps-5">
+            <form action="">
+                <div class="row ps-5">
+                    <div class="col-1"></div>
+                    <div class="col-3">
+                        <img src="./assets/images/paper.png" style="height: 220px;">
+                        <div class="my-3">
+                            <input id="radio" class="form-check-input" name="run" type="radio" value="Paper">
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <img src="./assets/images/scissors.png" style="height: 220px;">
+                        <div class="my-3">
+                            <input id="radio" class="form-check-input" name="run" type="radio" value="Scissors" checked>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <img src="./assets/images/rock.png" style="height: 220px;">
+                        <div class="my-3">
+                            <input id="radio" class="form-check-input" name="run" type="radio" value="Rock">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container ps-4">
+            <button type="button" id="bSingle" class="button btn btn-outline-dark my-4" style="color: azure;" onclick="checking(this)">
+                <h2>START</h2>
+            </button>
+        </div>
     </div>
 
-    <div id="pics">
-        <div id="paper1"></div>
-        <div id="scissors1"></div>
-        <div id="rock1"></div>
-    </div>
-    <div id="radio1">
-        <input type="radio" name="play" value="paper" id="paper" class="">
-        <input type="radio" name="play" value="scissors" id="scissors">
-        <input type="radio" name="play" value="rock" id="rock">
+    <div id="Multiple" class="text-center py-2" style="color: white;">
+        <h1 id="b" class="fw-bolder">Rock Paper Scissors</h1>
+
+        <div class="my-4 py-2">
+            <h1 class="fw-bolder">Player 1 --- <span id="player1">0</span> : <span id="player2">0</span> --- Player 2</h1>
+        </div>
+        <div class="my-4">
+            <h2 class="fw-bolder" id="c">START</h2>
+        </div>
+
+        <div class="py-4" style="height: 305px">
+            <form action="">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                        <div class="row rounded-5" id="div1">
+                            <div class="col-4 py-2">
+                                <img src="./assets/images/paper.png" style="width: 150px;">
+                            </div>
+
+                            <div class="col-4 py-2">
+                                <img src="./assets/images/scissors.png" style="width: 150px;">
+                            </div>
+
+                            <div class="col-3 py-2">
+                                <img src="./assets/images/rock.png" style="width: 150px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1" style="width: 40px;"></div>
+                    <div class="col-5">
+                        <div class="row rounded-5" id="div2">
+                            <div class="col-4 py-2">
+                                <img src="./assets/images/paper.png" style="width: 150px;">
+                            </div>
+
+                            <div class="col-4 py-2">
+                                <img src="./assets/images/scissors.png" style="width: 150px;">
+                            </div>
+
+                            <div class="col-3 py-2">
+                                <img src="./assets/images/rock.png" style="width: 150px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div>
-        <button id="box" onclick="play()">Start</button>
-    </div>
-    <script src="app.js"></script>
+    <script src="./script/main.js"></script>
 </body>
 
 </html>
